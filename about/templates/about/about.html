@@ -144,16 +144,13 @@
             <div class="col-md-6">
                 <img class="img-responsive" src="http://placehold.it/750x450" alt="">
             </div>
-            <div class="col-md-6">
-                <h2>About Modern Business</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, magni, aperiam vitae illum voluptatum aut sequi impedit non velit ab ea pariatur sint quidem corporis eveniet. Odit, temporibus reprehenderit dolorum!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis?</p>
-            </div>
+            About
+            
         </div>
         <!-- /.row -->
 
         <!-- Team Members -->
+        {% for a in about %}
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Our Team</h2>
@@ -162,10 +159,10 @@
                 <div class="thumbnail">
                     <img class="img-responsive" src="http://placehold.it/750x450" alt="">
                     <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
+                        <h3>About<br>
+                            <small>the dept</small>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                        <p>{{ a.about }}</p>
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                             </li>
@@ -181,10 +178,10 @@
                 <div class="thumbnail">
                     <img class="img-responsive" src="http://placehold.it/750x450" alt="">
                     <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
+                        <h3>History<br>
+                            <small>of the dept.</small>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                        <p>{{ a.dept_history }}</p>
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                             </li>
@@ -200,10 +197,10 @@
                 <div class="thumbnail">
                     <img class="img-responsive" src="http://placehold.it/750x450" alt="">
                     <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
+                        <h3>Infrastructure<br>
+                            <small>of this very dept</small>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                        <p>{{ a.infra }}</p>
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                             </li>
@@ -219,10 +216,10 @@
                 <div class="thumbnail">
                     <img class="img-responsive" src="http://placehold.it/750x450" alt="">
                     <div class="caption">
-                        <h3>John Smith<br>
-                            <small>Job Title</small>
+                        <h3>labs<br>
+                            <small>of this dept.</small>
                         </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste saepe et quisquam nesciunt maxime.</p>
+                        <p>{{ a.labs }}</p>
                         <ul class="list-inline">
                             <li><a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
                             </li>
@@ -273,6 +270,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
         <!-- /.row -->
 
         <!-- Our Customers -->
