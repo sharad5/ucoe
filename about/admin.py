@@ -1,12 +1,8 @@
 from django.contrib import admin
-from .models import About_home
-from .models import Dept_history
-from .models import Infrastructure
-from .models import Labs
-from .models import Hostel
+from .models import Department
 
-admin.site.register(About_home)
-admin.site.register(Dept_history)
-admin.site.register(Infrastructure)
-admin.site.register(Labs)
-admin.site.register(Hostel)
+class DepartmentAdmin(admin.ModelAdmin):
+	list_filter = ['created','modified']
+	list_display = ('about','created','modified')
+
+admin.site.register(Department, DepartmentAdmin)
