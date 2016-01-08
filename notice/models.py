@@ -26,7 +26,7 @@ class Post(models.Model):
     title_events = models.CharField(max_length=200, blank = True, null = True)
     text_events = models.TextField(blank = True, null = True)
     created_date_events = models.DateTimeField(
-            blank = True)
+            blank = True, null = True)
 
     slide_image1 = models.ImageField(upload_to='images', blank=True, null = True)
     slide_image2 = models.ImageField(upload_to='images', blank=True, null = True)
