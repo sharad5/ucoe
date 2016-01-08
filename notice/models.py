@@ -3,33 +3,45 @@ from django.utils import timezone
 
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
+    author_notice = models.CharField(max_length=200, blank = True, null = True)
+    title_notice = models.CharField(max_length=200, blank = True, null = True)
+    text_notice = models.TextField(blank = True, null = True)
+    created_date_notice = models.DateTimeField(
+            blank = True, null = True)
+    
 
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+    author_highlights = models.CharField(max_length=200 , blank = True, null = True)
+    title_highlights = models.CharField(max_length=200, blank = True, null = True)
+    text_highlights = models.TextField(blank = True, null = True)
+   
+            
 
-    def __str__(self):
-        return self.title
+    author_announcement = models.CharField(max_length=200, blank = True, null = True)
+    title_announcement = models.CharField(max_length=200, blank = True, null = True)
+    text_announcement = models.TextField(blank = True, null = True)
+    created_date_announcement = models.DateTimeField(
+            blank = True, null = True)
 
-class Post_Highlight(models.Model):
-    author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
+    author_events = models.CharField(max_length=200, blank = True, null = True)
+    title_events = models.CharField(max_length=200, blank = True, null = True)
+    text_events = models.TextField(blank = True, null = True)
+    created_date_events = models.DateTimeField(
+            blank = True)
 
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+    slide_image1 = models.ImageField(upload_to='images', blank=True, null = True)
+    slide_image2 = models.ImageField(upload_to='images', blank=True, null = True)
+    slide_image3 = models.ImageField(upload_to='images', blank=True, null = True)
 
-    def __str__(self):
-        return self.title
+    event_title = models.CharField(max_length=200, blank = True, null = True)
+    event_text = models.CharField(max_length=200, blank = True, null = True)
+    event_image = models.ImageField(upload_to='images', blank=True, null = True)
+
+    vision_text = models.CharField(max_length=200, blank = True, null = True)
+    vision_author = models.CharField(max_length=200, blank = True, null = True)
+
+    gallery_image =  models.ImageField(upload_to='images', blank=True , null = True)
+
+
+    
+
+

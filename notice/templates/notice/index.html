@@ -4,6 +4,13 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/modern-business.css' %}">
+        <style>
+        .selected img {
+    opacity:0.5;
+}
+
+        </style>
+
 <head>
 
     <meta charset="utf-8">
@@ -40,23 +47,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+
                 </button>
-                <a class="navbar-brand" href="index.html">COMPUTER ENGINEERING DEPT.</a>
+                <a class="navbar-brand" href="/">COMPUTER ENGINEERING DEPT.</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="about">About</a>
+                        <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="services.html">Services</a>
+                        <a href="services.html">Academics</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.html">Courses</a>
                     </li>
+                    <li>
+                        <a href="contact.html">Admissions</a>
+                    </li>
+                     <li>
+                        <a href="contact.html">Campus</a>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Faculty <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="portfolio-1-col.html">1 Column Portfolio</a>
@@ -76,7 +89,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Placements <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="blog-home-1.html">Blog Home 1</a>
@@ -92,20 +105,13 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            
                             <li>
-                                <a href="full-width.html">Full Width Page</a>
+                                <a href="faq.html">Downloads</a>
                             </li>
+                            
                             <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
+                                <a href="pricing.html">Contact Us</a>
                             </li>
                         </ul>
                     </li>
@@ -116,35 +122,39 @@
         <!-- /.container -->
     </nav>
 
+
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+         <ol class="carousel-indicators">
+            <li><img  src="/media/images/puplogo.png" alt="" data-slide-to="1"></li>
+            <!-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+            <li data-target="#myCarousel" data-slide-to="2"></li> -->
+
+        </ol> 
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 1</h2>
-                </div>
+                {% for post in posts %}
+                <div class="fill" style="background-image:url ('http://127.0.0.1:8000/mysite/media/{{post.slide_image2}}');"></div>
+                {% endfor %}
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 2</h2>
+                    
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('http://csepup.ac.in/wp-content/uploads/2014/04/10.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
+                   
                 </div>
+
             </div>
+
         </div>
 
         <!-- Controls -->
@@ -166,19 +176,22 @@
                    UCOE PUNJABI UNIVERSITY PATIALA
                 </h1>
             </div>
+            
+
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-check"></i>NOTICE</h4>
                     </div>
                     <div class="panel-body">
-                        {% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
+                        
+    {% for post in posts %}
+                <h3><a href="">{{ post.title_notice }}</a></h3>
+        <p>published: {{ post.created_date_notice }}</p>
         <!--<p>{{ post.text|linebreaks }}</p>-->
-    </div>
-{% endfor %}
+        
+    {% endfor %}
+
                         
                         <!--<a href="#" class="btn btn-default">Learn More</a>-->
                     </div>
@@ -190,115 +203,151 @@
                         <h4><i class="fa fa-fw fa-gift"></i> HIGHLIGHTS</h4>
                     </div>
                     <div class="panel-body">
-                      {% for post in posth %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <!--<p>{{ post.text|linebreaks }}</p>-->
-    </div>
-{% endfor %}
+                      
+    {% for post in posts %}
+        
+        <h3><a href="">{{ post.title_highlights }}</a></h3>
+        <p>published: {{ post.created_date_highlights }}</p>
+    {% endfor %}    
+   
+
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+
+                <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-gift"></i>ANNOUNCEMENT</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        {% for post in posts %}
+                        <h3><a href="">{{ post.title_announcement }}</a></h3>
+        <p>published: {{ post.created_date_announcement }}</p>
+        {% endfor %} 
+                        
                     </div>
                 </div>
             </div>
             
             
+     </div>
+
+
+<div class="container">
+<div class = "row">
+    <div class = "com-md-12">
+        <div class="panel-heading">
+                <center><h3><i class="fa fa-fw fa-gift"></i>VISION</h3></center>
+            </div>
+            
+            <p>Lorem ipsum dolor sit amet, etiam minimum delicatissimi vix ad, aeterno conclusionemque ei sea, an mei quando euismod constituam. Dicta nostrum reprimique no nec, ne sint ferri expetenda per. Pro graecis liberavisse an, doming deleniti no pro. Ad iusto interesset pro. Qui ea inermis corrumpit, case vide cu his, id vix aperiam dignissim eloquentiam.
+</p>
+            <p><i><left>-LAKHWINDER KAUR<left></i></p>
         </div>
-
-
-         <h4>UPCOMMING EVENTS</h4>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- /.row -->
-
-        <!-- Portfolio Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Portfolio Heading</h2>
+    </div>
+</div>
+<br></br>
+     <div class="row">
+       <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="fa fa-fw fa-gift"></i>UPCOMING EVENTS</h4>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                </a>
+            <div class="panel-body">
+                <div class = "col-md-4">
+                    <div class="list-group">
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
+</div>
+                </div>
+                <div class = "col-md-8">
+                      <img class="img-responsive img-portfolio img-hover"
+                       src="http://collegedunia.com/public/college_data/images/campusimage/1410348081uce6.jpg" alt="">
+                </div>
+
+
+
             </div>
         </div>
-        <!-- /.row -->
+    </div>
+</div>
+      
+        
 
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Modern Business Features</h2>
-            </div>
-            <div class="col-md-6">
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v3.2.0</strong>
-                    </li>
-                    <li>jQuery v1.11.0</li>
-                    <li>Font Awesome v4.1.0</li>
-                    <li>Working PHP contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                    <li>17 HTML pages</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            </div>
-            <div class="col-md-6">
-                <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-            </div>
-        </div>
-        <!-- /.row -->
+                     
+                     
 
-        <hr>
+
+         
+       
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+          <h2 class="page-header">GALLERY</h2>
+<div class="row">
+    
+{% for post in posts %}
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="../../../{{ post.event_image.url }}" alt="...">
+    </a>
+  </div>
+{% endfor %}
+  
+</div>
+
+
+
+
+
+
+
+
+
+
 
         <!-- Call to Action Section -->
         <div class="well">
@@ -307,7 +356,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
                 </div>
                 <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                    <a class="btn btn-lg btn-default btn-block" href="#">MOVE TO TOP</a>
                 </div>
             </div>
         </div>
@@ -327,9 +376,15 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="../static/js/jquery.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 
+
+
+  
+
+
+    <script src="../static/js/jquery.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      
     
 
 
@@ -339,6 +394,11 @@
         interval: 5000 //changes the speed
     })
     </script>
+    
+
+
+
+
 
 </body>
 

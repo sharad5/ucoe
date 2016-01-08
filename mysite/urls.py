@@ -16,10 +16,18 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from django.contrib import admin
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
      url(r'', include('notice.urls')),
      url(r'', include('highlights.urls')),
      url(r'^about/', include('about.urls')),
+     url(r'^tech_faculty/', include('faculty.urls')),
+     url(r'^faculty/', include('faculty.urls')),
+     url(r'^download/', include('download.urls')),
+     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        })
+     
 ]
